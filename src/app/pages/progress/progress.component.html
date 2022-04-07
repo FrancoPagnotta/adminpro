@@ -20,29 +20,7 @@
 	<div class="col-6">
 		<div class="card">
 			<div class="card-body">
-				<div class="input-group">
-					<span class="input-group-btn mx-2">
-						<button class="btn btn-primary" 
-								type="button"
-								(click)="changePercentage(-5)">
-							<i class="fa fa-minus"></i>
-						</button>
-					</span>
-					<input type="text" 
-							class="form-control" 
-							placeholder="Progress"
-							[formControl]="percentage">
-					<span class="input-group-btn mx-2">
-						<button class="btn btn-primary" 
-								type="button"
-								(click)="changePercentage(5)">
-							<i class="fa fa-plus"></i>
-						</button>
-					</span>
-				</div>
-				<div class="container-error mt-2 text-center">
-					<span *ngIf="percentage.errors" class="text-danger font-weight-normal"> Please enter a value between 0 or 100 </span>
-				</div>
+				<app-incrementer [percentageProgress]="percentageProgress" (emitPercentageEvent)="updatePercentage($event)"></app-incrementer>
 			</div>
 		</div>
 	</div>

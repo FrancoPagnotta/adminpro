@@ -7,7 +7,7 @@ import { NotpageComponent } from './notpage/notpage.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PagesComponent } from './pages.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -23,7 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     SharedModule,
-    ReactiveFormsModule
+    ComponentsModule
   ],
   exports: [
     DashboardComponent,
