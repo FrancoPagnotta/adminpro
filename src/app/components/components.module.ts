@@ -10,6 +10,7 @@ import { IncrementerComponent } from './incrementer/incrementer.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [IncrementerComponent]
 })
 export class ComponentsModule { }
