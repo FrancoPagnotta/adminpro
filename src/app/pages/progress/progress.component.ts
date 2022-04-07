@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-progress',
   templateUrl: './progress.component.html',
   styleUrls: ['./progress.component.css']
 })
-export class ProgressComponent {
+export class ProgressComponent implements OnInit {
   percentageProgress: number = 40;
+  percentage: FormControl = new FormControl('');
 
   constructor() {}
+
+  ngOnInit(): void {
+    this.percentage.setValue(this.percentageProgress);
+  }
 
   getPercentageProgress(): string {
     return `${this.percentageProgress}%`;
@@ -23,7 +29,9 @@ export class ProgressComponent {
     return this.percentageProgress = 0;
     }
 
-    return this.percentageProgress = this.percentageProgress + value;
+    const result = this.percentageProgress + value;
+    this.percentage.setValue(result);
+    return this.percentageProgress = result;
   }
 }
 
