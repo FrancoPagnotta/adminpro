@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./progress.component.css']
 })
 export class ProgressComponent {
-  percentageProgress: number = 5;
+  percentageProgress: number = 40;
 
   constructor() {}
 
@@ -14,8 +14,16 @@ export class ProgressComponent {
     return `${this.percentageProgress}%`;
   }
 
-  changePercentage(value: number): void {
-    this.percentageProgress = this.percentageProgress + value;
+  changePercentage(value: number) {
+    if (this.percentageProgress >= 100 && value >= 0) {
+      return this.percentageProgress = 100;
+    }
+    
+    if (this.percentageProgress <= 0 && value <= 0) {
+    return this.percentageProgress = 0;
+    }
+
+    return this.percentageProgress = this.percentageProgress + value;
   }
 }
 
