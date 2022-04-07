@@ -6,10 +6,8 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { IncrementerComponent } from './components/incrementer/incrementer.component';
-
 @NgModule({
-  declarations: [ AppComponent, IncrementerComponent ],
+  declarations: [ AppComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
