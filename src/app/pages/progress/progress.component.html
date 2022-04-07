@@ -5,10 +5,19 @@
 				My progress
 				<div class="progress">
 					<div 
-						class="progress-bar bg-primary" 
+						class="progress-bar bg-primary mb-2" 
 						role="progressbar" 
 						style="height: 15px" 
-						[style.width]="getPercentageProgress()"
+						[style.width]="getProgress(progress1)"
+						role="progressbar">
+					</div>
+				</div>
+				<div class="progress">
+					<div 
+						class="progress-bar bg-success" 
+						role="progressbar" 
+						style="height: 15px" 
+						[style.width]="getProgress(progress2)"
 						role="progressbar">
 					</div>
 				</div>
@@ -20,14 +29,18 @@
 	<div class="col-6">
 		<div class="card">
 			<div class="card-body">
-				<app-incrementer [percentageProgress]="percentageProgress" (emitPercentageEvent)="updatePercentage($event)"></app-incrementer>
+				<app-incrementer [progress]="progress1" 
+								(emitProgressEvent)="progress1 = $event">
+				</app-incrementer>
 			</div>
 		</div>
 	</div>
 	<div class="col-6">
 		<div class="card">
 			<div class="card-body">
-				2
+				<app-incrementer [progress]="progress2" 
+								(emitProgressEvent)="progress2 = $event">
+				</app-incrementer>
 			</div>
 		</div>
 	</div>
