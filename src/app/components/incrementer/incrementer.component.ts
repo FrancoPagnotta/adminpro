@@ -9,6 +9,7 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class IncrementerComponent implements OnInit {
   @Input() progress!: number;
+  @Input() btnClass: string = 'btn btn-primary';
   @Output() emitProgressEvent: EventEmitter<number> = new EventEmitter<number>();
   control!: FormControl;
   
