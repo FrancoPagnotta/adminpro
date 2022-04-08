@@ -20,13 +20,15 @@ export class IncrementerComponent implements OnInit {
     this.createFormControl();
     this.control.setValue(this.progress);
     this.control.valueChanges.subscribe((value: number) => {
-      if (this.control.value === '') {
+      if (value >= 100) {
+        this.progress = 100;
+      } else if (value <= 0) {
         this.progress = 0;
       } else {
         this.progress = value;
       }
       this.emitProgressEvent.emit(this.progress);
-    })
+    });
   }
 
   createFormControl(): void {
