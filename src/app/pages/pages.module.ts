@@ -10,6 +10,7 @@ import { Graphic1Component } from './graphic1/graphic1.component';
 import { NotpageComponent } from './notpage/notpage.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PagesComponent } from './pages.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -19,7 +20,8 @@ import { PagesComponent } from './pages.component';
     DashboardComponent,
     Graphic1Component,
     NotpageComponent,
-    ProgressComponent
+    ProgressComponent,
+    AccountSettingsComponent
   ],
   imports: [
     CommonModule,
