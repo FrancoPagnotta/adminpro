@@ -7,18 +7,19 @@ import { ChartData, ChartType } from 'chart.js';
   styleUrls: ['./donut.component.css']
 })
 export class DonutComponent implements OnInit {
-  @Input() public doughnutChartLabels: string[] = [];
-  public doughnutChartData: ChartData<'doughnut'> = {
-    labels: this.doughnutChartLabels,
-    datasets: [
-      { data: [ 350, 450, 100 ] }
-    ]
-  };
+  @Input() public doughnutChartLabels!: string[];
+  public doughnutChartData!: ChartData<'doughnut'>;
   public doughnutChartType: ChartType = 'doughnut';
 
   constructor() { }
 
   ngOnInit(): void {
+    this.doughnutChartData = {
+      labels: this.doughnutChartLabels,
+      datasets: [
+        { data: [ 350, 450, 100 ] }
+      ]
+    };
   }
 
 }
