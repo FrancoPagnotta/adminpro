@@ -3,12 +3,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h3>Sales</h3>
-				<div style="width: 364px; height: 364px">
-					<canvas baseChart
-					  		[data]="doughnutChartData"
-							[type]="doughnutChartType">
-					</canvas>
-				  </div>
+				<app-donut [doughnutChartLabels]=" ['angular','react','vue'] " ></app-donut>
 			</div>
 		</div>
 	</div>
