@@ -17,6 +17,9 @@ import { NgChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     NgChartsModule
   ],
-  exports: [IncrementerComponent]
+  exports: [
+    IncrementerComponent,
+    DonutComponent
+  ]
 })
 export class ComponentsModule { }
