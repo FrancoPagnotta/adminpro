@@ -1,5 +1,8 @@
 <div class="row">
 	<div class="col-6">
-		<app-donut [doughnutChartLabels]=" ['angular','react','vue'] " ></app-donut>
+		<app-donut title="Front" [doughnutChart]="labelChart1" ></app-donut>
+	</div>
+	<div class="col-6">
+		<app-donut title="Back" [doughnutChart]="labelChart2" ></app-donut>
 	</div>
 </div>

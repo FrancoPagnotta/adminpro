@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartData, ChartType } from 'chart.js';
+import { ChartInfo } from 'src/app/components/interfaces/chart';
 
 @Component({
   selector: 'app-graphic1',
@@ -7,14 +7,16 @@ import { ChartData, ChartType } from 'chart.js';
   styleUrls: ['./graphic1.component.css']
 })
 export class Graphic1Component implements OnInit {
-  public doughnutChartLabels: string[] = [ 'Download Sales', 'In-Store Sales', 'Mail-Order Sales' ];
-  public doughnutChartData: ChartData<'doughnut'> = {
-    labels: this.doughnutChartLabels,
-    datasets: [
-      { data: [ 350, 450, 100 ] }
-    ]
+  
+  public labelChart1: ChartInfo = {
+    chartLabels: ['angular','react','vue'],
+    chartData: [350, 450, 100]
   };
-  public doughnutChartType: ChartType = 'doughnut';
+
+  public labelChart2: ChartInfo = {
+    chartLabels: ['node','express','mongodb'],
+    chartData: [200, 350, 100]
+  };
 
   constructor() { }
 

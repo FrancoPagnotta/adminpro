@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChartData, ChartType } from 'chart.js';
+import { ChartInfo } from '../interfaces/chart';
 
 @Component({
   selector: 'app-donut',
@@ -7,7 +8,9 @@ import { ChartData, ChartType } from 'chart.js';
   styleUrls: ['./donut.component.css']
 })
 export class DonutComponent implements OnInit {
-  @Input() public doughnutChartLabels!: string[];
+  @Input() public title!: string;
+  @Input() public doughnutChart!: ChartInfo;
+
   public doughnutChartData!: ChartData<'doughnut'>;
   public doughnutChartType: ChartType = 'doughnut';
 
@@ -15,9 +18,9 @@ export class DonutComponent implements OnInit {
 
   ngOnInit(): void {
     this.doughnutChartData = {
-      labels: this.doughnutChartLabels,
+      labels: this.doughnutChart.chartLabels,
       datasets: [
-        { data: [ 350, 450, 100 ] }
+        { data: this.doughnutChart.chartData }
       ]
     };
   }
