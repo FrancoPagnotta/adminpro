@@ -34,7 +34,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     DashboardComponent,
     Graphic1Component,
     NotpageComponent,
-    ProgressComponent
+    ProgressComponent,
+    AccountSettingsComponent
   ]
 })
 export class PagesModule { }
