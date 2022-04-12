@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   logIn(): void {
     if (this.form.valid) {
       console.log(this.form.value);
-      this.router.navigateByUrl('/dashboard'); 
+      this.router.navigateByUrl('/'); 
     };
   }
 
