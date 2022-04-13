@@ -29,7 +29,7 @@ export class PromisesComponent implements OnInit {
 
     this.getUsers().then((users) => {
         console.log(users)
-      });
+    });
   }
 
   getUsers(): Promise<unknown> {
