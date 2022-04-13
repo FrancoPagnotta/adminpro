@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
@@ -11,8 +12,9 @@ export class RxjsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
     const obs$ = new Observable((observer: Subscriber<unknown>) => {
-      let i = 0;
+      let i = -1;
       const interval = setInterval(() => {
         i++;
         observer.next(i)
@@ -28,10 +30,12 @@ export class RxjsComponent implements OnInit {
       }, 1000)
     });
 
-    obs$.subscribe(
-      resp => console.log(resp), // Esta primer funcion se ejecuta cuando el next emite un valor
-      error => console.log(error), // Esta funcion se ejecuta cuando el error emite un valor. Cuando se emite el error, el complete no se va a ejecutar, corta en el error.
-      () => console.log('obs ended') // Y esta funcion se ejecuta cuando el complete se ejecuta, que en este caso si lo implementamos en el obs de arriba.
+    obs$.pipe(
+      retry(2)
+    ).subscribe(
+      resp => console.log(resp), // Esta primer funcion se ejecuta cuando se dispara el next.
+      error => console.log(error), // Esta funcion se ejecuta cuando se dispara el error. Cuando se dispara el error, no se dispara el complete.
+      () => console.log('obs ended') // Y esta funcion se ejecuta cuando se dispara el complete, que en este caso si lo implementamos en el obs de arriba.
     )
   }
 
