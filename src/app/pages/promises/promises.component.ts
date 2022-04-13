@@ -26,6 +26,18 @@ export class PromisesComponent implements OnInit {
     })
 
     console.log('Init end');
+
+    this.getUsers().then((users) => {
+        console.log(users)
+      });
+  }
+
+  getUsers(): Promise<unknown> {
+    return new Promise(resolve => {
+      fetch('https://reqres.in/api/users') //Fetch es una interfaz js que nos permite manipular peticiones y respuestas http.
+        .then(response => response.json())
+        .then(body => resolve(body.data));
+    });
   }
 
 }
