@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subscriber, interval } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscriber, interval, Subscription } from 'rxjs';
 import { retry, take, map, filter } from 'rxjs/operators';
 
 @Component({
@@ -7,7 +7,9 @@ import { retry, take, map, filter } from 'rxjs/operators';
   templateUrl: './rxjs.component.html',
   styleUrls: ['./rxjs.component.css']
 })
-export class RxjsComponent implements OnInit {
+export class RxjsComponent implements OnInit, OnDestroy {
+
+  public subscription!: Subscription;
 
   constructor() { }
 
@@ -19,14 +21,14 @@ export class RxjsComponent implements OnInit {
     //   error => console.log(error), // Esta funcion se ejecuta cuando se dispara el error. Cuando se dispara el error, no se dispara el complete.
     //   () => console.log('obs ended') // Y esta funcion se ejecuta cuando se dispara el complete, que en este caso si lo implementamos en el obs de arriba.
     // )
-    this.returnInterval()
+    this.subscription = this.returnInterval()
       .subscribe(resp => console.log(resp));
   }
 
   returnInterval(): Observable<number> {
     return interval(200)
       .pipe(
-        take(10),
+        // take(10),
         map(value => value + 1),
         filter(value => (value % 2 === 0) ? true : false)
     );
@@ -50,6 +52,10 @@ export class RxjsComponent implements OnInit {
         }
       }, 1000)
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
