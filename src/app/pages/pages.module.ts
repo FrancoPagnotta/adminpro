@@ -11,6 +11,7 @@ import { NotpageComponent } from './notpage/notpage.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PagesComponent } from './pages.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
 
 
 
@@ -21,7 +22,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     Graphic1Component,
     NotpageComponent,
     ProgressComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    PromisesComponent
   ],
   imports: [
     CommonModule,
