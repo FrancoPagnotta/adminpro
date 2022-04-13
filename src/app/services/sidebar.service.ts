@@ -12,7 +12,7 @@ export class SidebarService {
       subMenu: [
         {
           title: 'Main',
-          url: '/'
+          url: '/dashboard'
         },
         {
           title: 'Progressbar',
