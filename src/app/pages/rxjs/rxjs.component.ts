@@ -12,9 +12,19 @@ export class RxjsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.returnObservable().pipe(
+      retry(2)
+    ).subscribe(
+      resp => console.log(resp), // Esta primer funcion se ejecuta cuando se dispara el next.
+      error => console.log(error), // Esta funcion se ejecuta cuando se dispara el error. Cuando se dispara el error, no se dispara el complete.
+      () => console.log('obs ended') // Y esta funcion se ejecuta cuando se dispara el complete, que en este caso si lo implementamos en el obs de arriba.
+    )
+  }
+
+  returnObservable(): Observable<number> {
+    let i = -1;
     
-    const obs$ = new Observable((observer: Subscriber<unknown>) => {
-      let i = -1;
+    return new Observable<number>((observer: Subscriber<unknown>) => {
       const interval = setInterval(() => {
         i++;
         observer.next(i)
@@ -29,14 +39,6 @@ export class RxjsComponent implements OnInit {
         }
       }, 1000)
     });
-
-    obs$.pipe(
-      retry(2)
-    ).subscribe(
-      resp => console.log(resp), // Esta primer funcion se ejecuta cuando se dispara el next.
-      error => console.log(error), // Esta funcion se ejecuta cuando se dispara el error. Cuando se dispara el error, no se dispara el complete.
-      () => console.log('obs ended') // Y esta funcion se ejecuta cuando se dispara el complete, que en este caso si lo implementamos en el obs de arriba.
-    )
   }
 
 }
