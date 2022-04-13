@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscriber } from 'rxjs';
-import { retry } from 'rxjs/operators';
+import { Observable, Subscriber, interval } from 'rxjs';
+import { retry, take, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
@@ -12,13 +12,23 @@ export class RxjsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.returnObservable().pipe(
-      retry(2)
-    ).subscribe(
-      resp => console.log(resp), // Esta primer funcion se ejecuta cuando se dispara el next.
-      error => console.log(error), // Esta funcion se ejecuta cuando se dispara el error. Cuando se dispara el error, no se dispara el complete.
-      () => console.log('obs ended') // Y esta funcion se ejecuta cuando se dispara el complete, que en este caso si lo implementamos en el obs de arriba.
-    )
+    // this.returnObservable().pipe(
+    //   retry(2)
+    // ).subscribe(
+    //   resp => console.log(resp), // Esta primer funcion se ejecuta cuando se dispara el next.
+    //   error => console.log(error), // Esta funcion se ejecuta cuando se dispara el error. Cuando se dispara el error, no se dispara el complete.
+    //   () => console.log('obs ended') // Y esta funcion se ejecuta cuando se dispara el complete, que en este caso si lo implementamos en el obs de arriba.
+    // )
+    this.returnInterval()
+      .subscribe(resp => console.log(resp));
+  }
+
+  returnInterval(): Observable<number> {
+    return interval(1000)
+      .pipe(
+        take(4),
+        map(value => value + 1)
+    );
   }
 
   returnObservable(): Observable<number> {
